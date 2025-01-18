@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html Events</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing Images</h2>
+
+    <div>
+        <ul id="images">
+            <li><img src="pexels-apasaric-4344756.jpg" alt="photograph" width="200px" height="200px " id="japan"></li>
+            <li><img src="pexels-ivan-samkov-8952192.jpg" alt="" width="200px" height="200px" id="tea"></li>
+            <li><img src="pexels-kovyrina-30135170.jpg" alt="" width="200px" height="200px" id="nature"></li>
+            <li><img src="pexels-kyle-miller-169884138-15447422.jpg" alt="" width="200px" height="200px" id="america"></li>
+            <li><img src="pexels-mitbg000-30154480.jpg" alt="" width="200px" height="200px" id="beach"></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+
+    </div>
+    
+</body>
+
+<script>
+    // js is a event runs in sequentially  form however there are some which runs in non-sequence as well
+    
+    // don't inject event in html
+// 2. -- approach--->
+// it gives less features
+    // document.getElementById('japan').onclick = function(){
+    //     alert('japan image clicked');
+    // }
+    
+
+// 3. -- approach -->
+
+    // document.getElementById('japan').addEventListener('click', function(){
+    //     alert('japan image clicked')
+    // },false)
+    // here third parameter is also have to be present ----- false  also known as eventPropgation--- used for event bubling and event capturing mode
+
+
+// 4. attachEvent() --->
+// 5. jQuery -- on
+
+
+
+
+// ----------  Interview prospect
+
+
+
+
+// types , timeStamp , preventDefault
+// target, toElement, srcElement , currentTarget 
+
+// clientX , clienty ,screenX, screenY
+
+// altKey , ctrlKey, shift , keyCode
+
+
+
+//  ------------//
+
+
+
+
+// document.getElementById('japan').addEventListener('click', function(event){
+//     console.log(event)
+// },false)
+
+
+
+// events depends on the use case and if we want to use capturing mode than we use ----> true
+// document.getElementById('images').addEventListener('click', function(event){
+//     console.log('clicked inside the ul')
+// },true)
+
+// document.getElementById('tea').addEventListener('click', function(event){
+    // console.log('tea clicked')
+// },true)
+    
+    
+
+
+// and if we don't want propogation then we use stopPropagation() method
+
+// to stop the propagation then we have to use the eventpropagtion parameter should be false for both the child and parent.
+
+// document.getElementById('images').addEventListener('click', function(event){
+//     console.log('clicked inside the ul')
+// },false)
+
+// document.getElementById('nature').addEventListener('click', function(e){
+//     console.log('clicked on nature');
+//     e.stopPropagation();
+// }, false)
+
+
+
+// preventDefault() ------> 
+
+// document.getElementById('google').addEventListener('click', function(e){
+//     console.log('google clicked')
+//     e.preventDefault();
+// },false)
+
+
+
+
+// small kind of project ------>
+
+
+const images = document.getElementById('images');
+images.addEventListener('click', function(e){
+    // e.target.parentNode.style.display = 'none';
+    console.log(e.target.parentNode)
+    console.log(e.target.tagName)
+
+    if(e.target.tagName == 'IMG'){
+        let removeIt = e.target.parentNode;
+    // removeIt.remove();    // way ---1 
+    removeIt.parentNode.removeChild(removeIt);  // way ---2
+    }  
+},false)
+
+</script>
+</html>
