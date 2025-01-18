@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number Game</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #212121;
+            color: aliceblue;
+        }
+        
+      
+
+        .heading_container .headings {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: black;
+
+        }
+        .heading_container .information{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 15px;
+            
+
+        }
+        .game{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 500px;
+            width: 500px;
+            border: 2px solid white;
+            margin-left: 500px;
+            margin-top: 20px;
+            border-radius: 20px;
+            gap: 20px;
+            background-color: rgb(68, 124, 124);
+        }
+
+        
+        .game form{
+             display: flex;
+            align-items: center;
+            justify-content: center; 
+            flex-direction: column;
+            gap: 20px;
+            
+        }
+        
+
+        .game label{
+            font-family: 'Courier New', Courier, monospace;
+            font-size: xx-large;
+            font-weight: bolder;
+        }
+        .game input{
+            height: 40px;
+            width: 225px;
+            border-radius: 8px;
+        }
+
+        .game .button{
+            height: 50px;
+            width: 200px;
+            border-radius: 8px;
+            font-size: x-large;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-weight: bold;
+            background-color: burlywood;
+        }
+
+        .game .resultParas p{
+            color: rgb(122, 8, 137);
+            font-size: large;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="heading_container">
+        <div class="headings">
+            <h1>Number Guessing Game</h1>
+        </div>
+
+        <div class="information">
+            <p>Try and Guess a random number between 1 to 100</p>
+            <p>You have 10 attemps to guess the right number.</p>
+        </div>
+    </div>
+
+    <div class="game">
+    <form class="form">
+        <label for="guessField" id="guess">Guess A Number</label>
+        <input type="text"  id="guessField" class="guessField">
+
+       <input type="submit" class="button" value="submit guess" id="submit guess">
+
+    </form>    
+
+    <div class="resultParas">
+        <p>Previous Guesses : <span class="guesses"></span>  </p>
+        <p>Guesses Remaining : <span class="lastResult">10</span> </p>
+        <p class="lowOrhi"></p>
+   </div>
+        
+    </div>
+
+    
+</body>
+
+<script>
+    let  randomNumber = parseInt(Math.random() * 100 + 1);
+
+   const submitButton =  document.querySelector('.button');
+   const userInput =  document.querySelector('#guessField');
+   const guessSlot =  document.querySelector('.guesses');
+   const remaining =  document.querySelector('.lastResult');
+   const loworhi =  document.querySelector('.lowOrhi');
+   const startOver = document.querySelector('.resultParas');
+
+   const p = document.createElement('p');
+
+
+
+   let prevGuess = [];
+   let numGusee = 1;
+
+   let playGame = true;
+
+   if(playGame){
+    submitButton.addEventListener('click', function(event){
+        event.preventDefault();
+        const guess = parseInt(userInput.value);
+        console.log(guess);
+        validateGuess(guess);
+    } )
+   }
+
+
+
+// to check the guess value----> that is it between the 1 - 100 ;
+   function validateGuess(guess){
+        if(isNaN(guess)){
+            alert("Please enter a valid Number")
+        }else if(guess < 1){
+            alert("Please enter a number greater than 1")
+        }else if(guess > 100){
+            alert("Please enter a number less than 100")
+        }else{
+            prevGuess.push(guess);
+
+            if(numGusee === 11){
+                displayGuess(guess);
+                displayMessage(`Game over. Random Number was ${randomNumber}`);
+                endGame();
+            }
+            else{
+                displayGuess(guess);
+                checkGuess(guess);
+            }
+        }
+    
+   }
+
+
+//    to check the values --->
+   function checkGuess(guess){
+    if(guess === randomNumber){
+        displayMessage(`You guessed it right`);
+        endGame();
+    }
+    else if(guess < randomNumber){
+        displayMessage(`Number is too low`);
+    }else if(guess > randomNumber){
+        displayMessage(`Number is too high`);
+    }
+
+   }
+
+// clean the input and update the array
+   function displayGuess(guess){
+    userInput.value = '';
+    guessSlot.innerHTML += `${guess}  `;
+    numGusee++;
+    remaining.innerHTML = `${11 - numGusee}`;
+
+   }
+
+//    will interact with dom and here we add our guess
+   function displayMessage(message){
+        loworhi.innerHTML = `<h3>${message}</h3>`
+
+   }
+
+
+   function endGame(){
+    userInput.value = '';
+    userInput.setAttribute('disabled' , '');
+    p.classList.add('button');
+    p.innerHTML = `<input type="submit" id="newGame" class="button" value = "Start New Game">`;
+    startOver.appendChild(p);
+    playGame = false;
+    newGame();
+        
+    }
+
+
+   function newGame (){
+    const newGameButton = document.querySelector('#newGame');
+    newGameButton.addEventListener('click', function (event){
+        randomNumber = parseInt(Math.random() * 100 + 1);
+        prevGuess = [];
+        numGusee = 1;
+        guessSlot.innerHTML = '';
+        remaining.innerHTML = `${11 - numGusee}`;
+        userInput.removeAttribute('disabled');
+        startOver.removeChild(p);
+        
+        playGame = true;
+    })
+
+   }
+
+   
+
+
+</script>
+</html>
