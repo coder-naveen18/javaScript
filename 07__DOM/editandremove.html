@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create , Edit and Remove </title>
+    <link rel="shortcut icon" href="gg.png" type="image/x-icon">
+</head>
+<body style="background-color: #212121; color: aliceblue;">
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+</body>
+<script>
+    function addLanguage(langName){
+        const newElement  = document.createElement('li');
+        newElement.innerHTML = `${langName}`;
+        document.querySelector('.language').appendChild(newElement);
+    }
+    addLanguage("Python");
+    addLanguage("Java");
+
+
+
+// optimized approach
+    function addOptiLanguage(langName){
+        const newElement = document.createElement('li');
+        newElement.appendChild(document.createTextNode(langName));
+
+        document.querySelector('.language').appendChild(newElement)
+    }
+
+    addOptiLanguage("GOlang");
+
+
+
+    // Edit any value--------> 
+
+    const firstEdit = document.querySelector('li:nth-child(2)');
+
+    // firstEdit.innerHTML = "Mojito"
+    
+    const newLi = document.createElement('li')
+    newLi.textContent = "Mojito";
+    firstEdit.replaceWith(newLi);   
+    
+    
+    const secondEdit = document.querySelector('li:first-child');
+    secondEdit.outerHTML = '<li>TypeScript</li>';
+
+
+    // Remove any element ---->
+
+    const lastLang = document.querySelector("li:last-child");
+    lastLang.remove();
+
+
+</script>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Switcher</title>
+    <style>
+        .canvas{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .canvas .canvas_{
+          display: flex;
+          flex-direction: row;
+          gap: 5px;
+        }
+        .canvas .button{
+          height: 50px;
+          width: 50px;
+          border: 2px solid black;
+        }
+
+        #gray{
+          background-color: gray;
+        }
+        #white{
+          background-color: aliceblue;
+        }
+        #blue{
+          background-color: blue;
+        }
+        #yellow{
+          background-color: yellow;
+        }
+                
+    </style>
+</head>
+<body>
+  <div class="canvas">
+    <h1>Color Scheme Switcher </h1>
+     
+    <div class="canvas_">
+    <span class="button" id="gray"></span>
+    <span class="button" id="white"></span>
+    <span class="button" id="blue"></span>
+    <span class="button" id="yellow"></span>
+    </div>
+
+    <h2>Try clicking on one of the colors above to change the background color of the page!</h2>
+  </div>
+    
+</body>
+<script>
+
+  const buttons = document.querySelectorAll('.button');
+  const body = document.querySelector('body');
+
+
+  buttons.forEach(function(button){
+    console.log(button);
+    button.addEventListener('click' , function(event){
+      console.log(event);
+      console.log(event.target);
+
+      if(event.target.id === "gray"){
+        body.style.backgroundColor = event.target.id;
+      }
+      else if(event.target.id === "white"){
+        body.style.backgroundColor = event.target.id;
+      }
+      else if(event.target.id === "blue"){
+        body.style.backgroundColor = event.target.id;
+      }
+      else{
+        body.style.backgroundColor = "yellow";
+
+      }
+    })
+  });
+
+
+
+ 
+
+</script>
+
+
+</html>
