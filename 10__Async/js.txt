@@ -1,0 +1,11 @@
+js is a --->  in default js , js contains the following properties
+
+1. --- synchronous 
+2. --- single threaded
+
+
+
+Execution Context ------> executes one line of code at a time
+
+means --- > each operation waits for the previous one to complete before executing 
+

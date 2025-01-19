@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Naveen Night And Code</h1>
+
+    <button id="stop">Stop</button>
+    
+</body>
+<script>
+// Way 1 --- > to use setTimeOut function
+
+    // setTimeout(function(){
+    //     console.log("Naveen");
+    // }, 2000)
+
+// Way 2 ----> using refrence of the function handler
+
+    // const sayNaveen = function(){
+    //     console.log("Naveen Sahu");
+    // }
+
+    // setTimeout(sayNaveen, 2000)
+
+
+    
+
+    const changeText = function(){
+        const h1 = document.querySelector('h1');
+        h1.innerHTML = "Best way to learn the code";
+
+    }
+
+    const changeMe = setTimeout(changeText, 2000)
+
+
+// ClearTimeOut function----->
+
+    document.querySelector('#stop').addEventListener('click', function(){
+        clearTimeout(changeMe);
+        console.log("Stop");
+    })
+
+
+</script>
+</html>

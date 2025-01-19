@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naveen And Js</title>
+</head> 
+<body>  
+
+    <h1>Start the code</h1>
+    <button id="Start">Start</button>
+    <button id="stop">Stop</button>
+    
+</body>
+
+<script>
+    // setInterval(function(){
+    //     console.log("Naveen" ,Date.now());
+    // },1000)
+
+
+    // const sayDate = function(str){
+    //     console.log("str" , Date.now());
+    // }
+
+    // const sayDat =  setInterval(sayDate, 2000 , "Hi")
+
+
+
+    // clearInterval(sayDat)
+
+
+// Task ---- 1. ---> use the start button to start the setInterval function and use clearInterval function when clicked on the stop button
+
+    const startInterval = document.querySelector('#Start');
+    const stopInterval = document.querySelector('#stop');   
+
+    let intervalId ;
+
+
+
+    startInterval.addEventListener("click", function(){
+        intervalId =  setInterval(function(){
+            console.log("Naveen Sahu" , Date.now());
+        }, 1000)
+        
+    })
+
+
+    function stopChanging(){
+        clearInterval(intervalId);
+    }
+    stopInterval.addEventListener('click', stopChanging )
+
+
+
+
+</script>
+</html>
