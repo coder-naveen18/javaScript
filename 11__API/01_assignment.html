@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment</title>
+</head>
+<body class="body">
+
+    <button class="button">Click</button>
+    
+</body>
+
+<script>
+
+    const body = document.querySelector('.body');
+
+// Declaring the api url ---- >
+    const hiteshRequestUrl =  'https://api.github.com/users/hiteshchoudhary';
+
+// Using the XMLHttpRequest() class's object --->
+    const hxr = new XMLHttpRequest();
+    console.log("Request unsend :",hxr.readyState);
+
+// requesting the api for get type of data ---->
+    hxr.open('GET', hiteshRequestUrl);
+    console.log("Request open called :",hxr.readyState);
+
+
+// Tracking the states ---->
+    hxr.onreadystatechange = function(){
+        console.log("Here we are :" , hxr.readyState);
+// Applying some conditions on the states--->
+        if(hxr.readyState === 4){
+// converting the data from string to Json object 
+            const data = JSON.parse(this.response);
+            console.log(data);
+// storing the image ----->
+           const image =  data.avatar_url ;
+           console.log(image);
+// storing the followers --->
+           const followers = data.followers;
+           console.log(followers);
+        
+   const button = document.querySelector('.button');
+
+
+// adding Event Listner so that can perform some action --->
+        button.addEventListener('click', function(){
+// changing the innerHtml of the body --->
+         body.innerHTML = `<div style="height:300px width : 300px">
+             <img src="${image}"> 
+             <p>Followers : ${followers}</p>
+
+             </div>`;
+        })
+        }
+    }
+    
+// calling the send() so that api request can be sent --->
+    hxr.send();
+
+
+</script>
+</html>
