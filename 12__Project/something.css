@@ -1,0 +1,73 @@
+
+        body{
+            background-image: url(pexels-tnp-1464613945-29971353.jpg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 150px;
+            gap: 30px;
+        }
+        .container{
+            height: 450px;
+            width: 350px;
+            background-color: rgb(150, 150, 160);
+            border-radius: 10px;
+            
+
+        }
+
+        .container .image_container{
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            background-color: blueviolet;
+            height: 40%;
+            width: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            
+        }
+        .container .image_container .image{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+            flex-direction: column;
+        }
+
+        .container .image_container .image img{
+            height: 110px;
+            width: 110px;
+            border-radius: 50%;
+        }
+        .container .information_container{
+            height: 60%;
+            width: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .email_field{
+            height: 15%;
+            width: 85%;
+            background-color: whitesmoke;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding-left: 15px;
+            gap: 5%;
+            border-radius: 4px;
+        }
+
+        button{
+            height: 25px;
+            width: 80px;
+            font-size: large;
+            font-weight: bold;
+        }
+    
