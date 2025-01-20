@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random user generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        body{
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 150px;
+        }
+        .container{
+            height: 450px;
+            width: 350px;
+            background-color: rgb(150, 150, 160);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+        }
+
+        .container .image_container{
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            background-color: blueviolet;
+            height: 40%;
+            width: 350px;
+            
+        }
+        .container .image_container .image{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+            flex-direction: column;
+        }
+
+        .container .image_container .image img{
+            height: 110px;
+            width: 110px;
+            border-radius: 50%;
+        }
+        .container .information_container{
+            height: 60%;
+            width: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .email_field{
+            height: 15%;
+            width: 85%;
+            background-color: whitesmoke;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5%;
+            border-radius: 4px;
+        }
+        .email_field input{
+            background-color: whitesmoke;
+            width: 80%;
+            
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="image_container">
+            <div class="image">
+                <img src="pexels-javey-du-2148686629-30301026.jpg" alt="" id="image_Random">
+            </div>
+            <p><span>Name</span> | <span>Gender</span> </p>
+        </div>
+
+        <div class="information_container">
+            <div class="email_field">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="text" id="mail">    
+
+            </div>
+
+            <div class="email_field">
+                <i class="fa-solid fa-phone"></i>
+                <input type="text" id="mail">    
+
+            </div>
+
+            <div class="email_field">
+                <i class="fa-sharp fa-solid fa-location-dot"></i>
+                <input type="text" id="mail">    
+
+            </div>
+        </div>
+
+    </div>
+    
+</body>
+</html>
