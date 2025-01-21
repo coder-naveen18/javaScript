@@ -5,7 +5,9 @@
 - This means they provide a more familiar and structured way to define objects and manage inheritance, 
 - but under the hood, they rely on JavaScript's prototypal inheritance.
 
-``` Example --->
+
+## Example
+``` 
 class Person {
   constructor(name, age) {
     this.name = name;
