@@ -34,13 +34,13 @@ person.greet(); // Output: Hello, my name is Alice and I am 25 years old.
 - Example ---> toLowerCase
 
 # Why use OOps ?
-- 1. Code Reusability
-- 2. Modularity
-- 3. Encapsulation
-- 4. Inheritance and Polymorphism
-- 5. Scalability
-- 6. Maintainability
-- 7. Real-World Modeling
+- Code Reusability
+- Modularity
+- Encapsulation
+- Inheritance and Polymorphism
+- Scalability
+- Maintainability
+- Real-World Modeling
 
 
 
