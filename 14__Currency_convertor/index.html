@@ -5,140 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currency Convertor</title>
     <link rel="shortcut icon" href="currency_converter.png" type="image/x-icon">
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-            font-family: 'Times New Roman', Times, serif;
-
-        }
-
-        body{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: rgb(56, 21, 88);
-            margin-top: 100px;
-        }
-        .container{
-            height: 500px;
-            width: 350px;
-            background-color: azure;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        .container .main_block{
-            height: 200px;
-            width: 350px;
-            
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
-        .container .rest{
-            height: 300px;
-            width: 350px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 15px;
-
-        }
-        .amount_display{
-            display: flex;
-            justify-content: flex-start;
-            flex-direction: column;
-            
-        }
-        .amount_display p{
-            width: 300px;
-            font-size: larger;
-            font-weight: 800;
-        }
-        .amount_display input{
-            height: 30px;
-            border: 0cap;
-            border-bottom: 2px solid black ;
-        }
-
-        .options{
-            display: flex;
-            width: 100%;
-            justify-content: space-around;
-            align-items: center;
-            gap: 5px;
-        }
-        select{
-            width: 40%;
-            padding: 10px;
-            background-color: blueviolet;
-            border-radius: 5px;
-            border :2px solid black;
-            color: aliceblue;
-        }
-        .button{
-            height: 50px;
-            width: 150px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .button #convert{
-            height: 100%;
-            width: 100%;
-            font-size: 1.5rem;
-            font-weight: 900;
-            border-radius: 10px;
-
-        }
-
-        .rest .result{
-            width: 80%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 50px;
-            background-color: blueviolet;
-            border-radius: 10px;
-            
-        }
-
-        .final_result{
-            width: 80%;
-            color: bisque;
-        }
-        
-    </style>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div class="container">
-        <div class="main_block">
-            <img src="currency_converter.png" alt="" height="150px" width="150px" style="margin-top: 5px;">
-            <h1>Currency Convertor</h1>
+        <div class="container">
+            <div class="first_Part">
+                <img src="currency_converter.png" alt="currency image" >
+                <h2>Currency Convertor</h2>
+            </div>
+            <div class="second_Part">
+                <div id="Amount">
+                    <h2>Amount :</h2>
+                    <p><input type="number" value="100" id="amount"></p>
+                </div>
+                <div id="currency_selector">
+                    <select name="from" id="from_current_currency"></select>
+                    <select name="to" id="to_current_currency"></select>
+                </div>
+                <div id="Convertor_button">
+                    <button id="button">Convert</button>
+                    <p id="Result"></p>
+                </div>
+            </div>
         </div>
-        <div class="rest">
-            <div class="amount_display">
-                <p>Amount : </p>
-                <input type="Number" value="100" id="amount">
-            </div>
-            <div class="options">
-                <select name="" id="from_currency"></select>
-                <select name="" id="to_currency"></select>
-            </div>
-            <div class="button">
-                <button id="convert">Convet</button>
-            </div>
-            <div class="result">
-                <p class="final_result"></p>
-            </div>
-        </div>
-    </div>
-    
+   
 </body>
 <script src="index.js"></script>
 </html>

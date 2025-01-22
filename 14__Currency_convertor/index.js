@@ -1,83 +1,75 @@
 
+let apiUrl = 'https://v6.exchangerate-api.com/v6/1a809ee2c0e699c7643551cb/latest/USD';
+let fromCurrency = document.querySelector('#from_current_currency');
+let toCurrency = document.querySelector('#to_current_currency');
+let Result = document.querySelector('#Result');
 
-const from_currency = document.querySelector('#from_currency');
-const to_currency = document.querySelector('#to_currency');
-const result_para = document.querySelector('.final_result');
 
 
- async function fromApiDetails() {
-    const requestUrl =await  fetch('https://v6.exchangerate-api.com/v6/1a809ee2c0e699c7643551cb/latest/USD')
-    const data = await requestUrl.json();
+let data;
+let response;
+let user;
 
-    console.log(data)
-    const user = data.conversion_rates;
-    console.log(user);
-    
-    
-    currencyAdd(user); 
-    
+
+async function getDetailsFromApi(){
+    response = await fetch(apiUrl);
+    data = await response.json()
+    user = data.conversion_rates;
+    letOptions(user);
+    toOption(user);
 }
 
-let optionText;
-let optionValue;
 
-// currencies add to the dropDown option---->
+// Adding the options of currency in from section---->
 
-function currencyAdd(user){
-    for (const  key in user) {
-            optionText = key;
-            optionValue = user[key];
-            console.log(`${optionText}  ${optionValue}`)
-
-
-             const option = document.createElement("option");
-             option.value = key;
-             option.text = key;
-// Adding to the to currency option
-             from_currency.add(option);            
-        }
-
-        for (const  key in user) {
-            optionText = key;
-            optionValue = user[key];
-            console.log(`${optionText}  ${optionValue}`)
-
-
-             const option = document.createElement("option");
-             option.value = key;
-             option.text = key;
-// Adding to the to currency option
-             to_currency.add(option);   
-        }
+function letOptions(user){
+    for(const key in user){
+        // console.log(`${key} and ${user[key]}`)
+        const option = document.createElement("option")
+        option.value = `${key}`;
+        option.text = `${key}`;
+        fromCurrency.add(option) ;// Adding the default value
+        
     }
-    // result_para.innerHTML = `${optionText} ${optionValue}  = ${optionText} ${optionValue}`
+}
 
-    // setting default values 
+// Adding the options of currency in To section--->
 
-    to_currency.innerHTML = `<option>INR</option>`
-    from_currency.innerHTML = `<option>USD</option>`
-
-    let convertCurrency = ()=>{
-            const Amount = document.querySelector('#amount');
-            const fromCurrency = from_currency.value;
-            const toCurrency = to_currency.value;
-
-            if(Amount.length != 0){
-                alert("okay");
-            }
-            else{
-                alert("Please enter a valid value");
-            }
+function toOption(user){
+    for(const key in user){
+        // console.log(`${key} and ${user[key]}`)
+        const newOption = document.createElement("option")
+        newOption.value = `${key}`;
+        newOption.text = `${key}`;
+        toCurrency.add(newOption) ;
+        toCurrency.value = "INR"; // Adding the default value
     }
+}
 
-    document.querySelector("#button").addEventListener("click", convertCurrency)
+getDetailsFromApi();
 
+
+
+// Lets convert the money ---->
+
+let convertCurrency = ()=>{
+    const Amount = document.querySelector('#amount').value;
+    const fromTheCurrecny = fromCurrency.value;  // returning the key
+    const toTheCurrecny = toCurrency.value;  // returning the key
     
+    if(Amount.length !=  0 && Amount != 0){
+        let fromExchangeRate = data.conversion_rates[fromTheCurrecny];
+        let toExchangeRate = data.conversion_rates[toTheCurrecny];
+        const convertedAmount = (Amount / fromExchangeRate) * toExchangeRate;
+        // console.log(convertedAmount)
+        
+        Result.innerHTML = `${Amount} ${fromTheCurrecny} = ${toTheCurrecny} ${convertedAmount.toFixed(2)}`
+    }
+    else{
+        alert("Please enter a valid Amount to convert")
+    }
 
+}
 
-
-
-
-
-
-fromApiDetails();
+document.querySelector('#button').addEventListener("click", convertCurrency);
+window.addEventListener('load' , convertCurrency)
