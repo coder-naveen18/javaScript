@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Product</title>
+</head>
+<body>
+    <img src="" alt="" id="image">
+    
+</body>
+<script>
+    let requestUrl = 'https://api.freeapi.app/api/v1/public/randomproducts'
+
+    
+
+    async function getData(){
+        const response = await fetch(requestUrl)
+        const object = await response.json()
+        console.log(object.data.data)
+
+        const product = object.data.data[0].images[0]
+
+        const image = document.querySelector('#image')
+        image.setAttribute('src' , `${product}`)
+
+        console.log(product)
+    }
+
+    getData()
+</script>
+</html>
